@@ -1,0 +1,30 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Recreate the matrix directly in the script since it's already destringed
+data = {
+    'X1': [None, 0.5013, 0.4964, 0.2422, 0.4243, 0.2135, 0.4677],
+    'X2': [0.5013, None, 0.4488, 0.2563, 0.3386, 0.2072, 0.3212],
+    'X3': [0.4964, 0.4488, None, 0.2086, 0.2799, 0.1460, 0.2444],
+    'X4': [0.2422, 0.2563, 0.2086, None, 0.2325, 0.1029, 0.2227],
+    'X5': [0.4243, 0.3386, 0.2799, 0.2325, None, 0.2409, 0.2593],
+    'X6': [0.2135, 0.2072, 0.1460, 0.1029, 0.2409, None, 0.2171],
+    'X7': [0.4677, 0.3212, 0.2444, 0.2227, 0.2593, 0.2171, None]
+}
+
+# Create DataFrame with the correct index and column labels
+df_cleaned = pd.DataFrame(data, index=['X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7'])
+
+# Plot the heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(df_cleaned, annot=True, cmap='coolwarm', fmt='.2f', cbar_kws={'label': 'q-statistic'})
+
+# Add title
+plt.title('The interaction of predictor variables on Greenhouse gases-WA')
+
+# Save the heatmap to a file (this needs to be done before plt.show())
+plt.savefig(r"C:\Users\Frank Osei-kusi\Desktop\heatmap_output.png")
+
+# Show the plot
+plt.show()
